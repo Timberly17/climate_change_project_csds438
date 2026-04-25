@@ -63,28 +63,37 @@ for column in top_indicators:
     historical_average = historical_data[column].mean()
     future_average = future_data[column].mean()
 
+    # Calculate difference
+    change = future_average - historical_average
+
     plt.figure(figsize=(6, 4))
 
-    bars = plt.bar(["Historical", "2070"], [historical_average, future_average])
+    # Single bar showing the change
+    bars = plt.bar(["Change"], [change])
 
+    # Clean title
     chart_title = column.replace("_", " ").title()
-    plt.title("Impact of Climate Change on " + chart_title, fontsize=12)
-    plt.ylabel("Average Value", fontsize=10)
+    plt.title("Change in " + chart_title, fontsize=12)
+    plt.ylabel("Difference (2070 - Historical)", fontsize=10)
 
+    # Add value label
     for bar in bars:
         height = bar.get_height()
         plt.text(
             bar.get_x() + bar.get_width() / 2,
             height,
-            round(height, 2),
+            round(height, 4),
             ha="center",
             va="bottom"
         )
 
+    # Add horizontal line at 0 (VERY important visually)
+    plt.axhline(0)
+
     plt.grid(axis="y", linestyle="--", alpha=0.5)
 
     plt.tight_layout()
-    plt.savefig("figures/" + column + ".png")
+    plt.savefig("figures/" + column + "_change.png")
     plt.close()
 
 print("The analysis is complete. Please check the figures folder for the summary and graphs.")
