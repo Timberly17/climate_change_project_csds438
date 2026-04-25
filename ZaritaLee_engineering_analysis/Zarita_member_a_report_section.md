@@ -1,4 +1,4 @@
-# Member A – Engineering Analysis
+# Zarita Lee (Member A) – Engineering Analysis
 
 ## Role
 As Member A, my responsibility, as outlined in the member assignments, was to translate machine learning results into civil engineering insights. The goal was to interpret climate outliers and determine how future conditions would impact infrastructure systems.
